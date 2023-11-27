@@ -5,6 +5,7 @@ import ProductDetails from "./components/ProductDetails";
 import Products from "./components/Products";
 import Header from "./components/layout/Header";
 import LogIn from "./components/LogIn";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   return (
@@ -23,6 +24,9 @@ const App = () => {
           </Route>
           <Route path="/LogIn">
             <LogIn />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
           {/* The default route that redirects to "/home" */}
           <Redirect from="/" to="/home" />

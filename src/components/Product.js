@@ -1,24 +1,18 @@
 import React from "react";
+import "./Product.css";
 
-const Product = () => {
+const Product = ({ id, image, title, rating, price }) => {
   return (
     <div className="product">
-      <img
-        src="https://m.media-amazon.com/images/I/71SNd5dEhoL._AC_UY327_FMwebp_QL65_.jpg"
-        alt="hard_drive"
-      />
+      <img src={image} alt="" />
       <div className="product_info">
-        <p>
-          Toshiba Canvio Advance 2TB Portable External Hard Drive USB 3.0, Black
-          - HDTCA20XK3AA
-        </p>
+        <p>{title}</p>
         <div className="product_rating">
-          <p>4</p>
+          <p>{rating}</p>
         </div>
+        <p className="product_price">{price}</p>
       </div>
-      <div className="prodcut_price">
-        <p>R1699</p>
-      </div>
+      <button className="product_button">Add to basket</button>
     </div>
   );
 };

@@ -3,18 +3,39 @@ import "./Products.css";
 import Product from "./Product";
 import { Link } from "react-router-dom";
 
-const Products = ({ id, image, title, rating, price }) => {
+const Products = () => {
   return (
-    <div className="product">
-      <img src={image} alt="" />
-      <div className="product_info">
-        <p>{title}</p>
-        <div className="product_rating">
-          <p>{rating}</p>
-        </div>
-        <p className="product_price">{price}</p>
+    <>
+      <div className="products_row">
+        <Product
+          id="1"
+          title="
+          Toshiba Canvio Advance 2TB Portable External Hard Drive USB 3.0, Black
+          - HDTCA20XK3AA"
+          image="https://m.media-amazon.com/images/I/71SNd5dEhoL._AC_UY327_FMwebp_QL65_.jpg"
+          rating="4"
+          price="R1699"
+        />
+        <Product
+          id="1"
+          title="
+          Toshiba Canvio Advance 2TB Portable External Hard Drive USB 3.0, Black
+          - HDTCA20XK3AA"
+          image="https://m.media-amazon.com/images/I/71SNd5dEhoL._AC_UY327_FMwebp_QL65_.jpg"
+          rating="4"
+          price="R1699"
+        />
+        <Product
+          id="1"
+          title="
+          Toshiba Canvio Advance 2TB Portable External Hard Drive USB 3.0, Black
+          - HDTCA20XK3AA"
+          image="https://m.media-amazon.com/images/I/71SNd5dEhoL._AC_UY327_FMwebp_QL65_.jpg"
+          rating="4"
+          price="R1699"
+        />
       </div>
-    </div>
+    </>
   );
 };
 
