@@ -1,20 +1,34 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import Modal from "./Modal";
+import { Link } from "react-router-dom";
+import ".LogIn.css";
 
 const LogIn = () => {
-  const [isOpen, setIsOpen] = useState(false);
   return (
-    <React.Fragment>
-      <h1>Sign in</h1>
-      <p>This is our login page</p>
-      <button onClick={() => setIsOpen(true)}>Open Modal</button>
-      {isOpen &&
-        ReactDOM.createPortal(
-          <Modal setIsOpen={setIsOpen} />,
-          document.getElementById(modal - root - div)
-        )}
-    </React.Fragment>
+    <div className="login">
+      <Link to="/">
+        <img
+          src="https://images-na.ssl-images-amazon.com/images/G/01/error/logo._TTD_.png"
+          alt="login_logo"
+          className="login_logo"
+        ></img>
+      </Link>
+      <div className="login_container">
+        <h1>Sign-in</h1>
+        <form>
+          <h5>E-mail</h5>
+          <input type="text"></input>
+          <h5>Password</h5>
+          <input type="password"></input>
+          <button type="submit" className="login_signInButton">
+            Sign In
+          </button>
+        </form>
+        <p>lorem</p>
+        <button className="login_registerButton">
+          Create your Amazon Account
+        </button>
+      </div>
+    </div>
   );
 };
 
