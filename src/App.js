@@ -9,7 +9,7 @@ import NotFound from "./components/NotFound";
 
 const App = () => {
   return (
-    <React.Fragment>
+    <>
       <Header />
       <main>
         <Switch>
@@ -32,7 +32,7 @@ const App = () => {
           <Redirect from="/" to="/home" />
         </Switch>
       </main>
-    </React.Fragment>
+    </>
   );
 };
 
