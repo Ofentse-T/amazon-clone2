@@ -3,18 +3,30 @@ import { Link } from "react-router-dom";
 import ".LogIn.css";
 
 const LogIn = () => {
-  const [isLoggedIn, SetIsLoggedin] = useState(false);
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [formIsValid, setFormIsValid] = useState(false);
 
-  const signIn = (e) => {
-    e.preventDefault();
-    const ennteredEmail = emailRef.current.value;
-    const ennteredPassword = passwordRef.current.value;
-    console.log("Email: ", ennteredEmail + "Password ", ennteredPassword);
-    localStorage.setItem("isLoggedIn", "1");
-    SetIsLoggedin(true);
+  const emailChangeHandler = (e) => {
+    setEmail(e.target.value);
+    setFormIsValid(e.target.value.includes("a") && password.trim().length > 6);
   };
+
+  const passwordChangeHandler = (e) => {
+    setEmail(e.target.value);
+
+    setFormIsValid(e.target.value.trim().length > 6 && email.includes("@"));
+  };
+};
+
+// const [isLoggedIn, SetIsLoggedin] = useState(false);
+// const emailRef = useRef();
+// const passwordRef = useRef();
+
+const signIn = (e) => {
+  e.preventDefault();
+  console.log("Email: ", ennteredEmail + "Password ", ennteredPassword);
+  console.log(formIsValid);
 
   return (
     <div className="login">
