@@ -1,21 +1,56 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useReducer } from "react";
 import { Link } from "react-router-dom";
 import ".LogIn.css";
 
+const redudcer = (state, action) => {
+  if (action.type === "EMAIL_INPUT") {
+    return {...state, emailValue: action.payload};
+  }
+
+  if (action.type === "PASS_INPUT") {
+    return {...state, passwordValue: action.payload};
+  }
+  return {emailValue: "", passwordValue: ""};
+};
+
 const LogIn = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [formIsValid, setFormIsValid] = useState(false);
+  // const [formIsValid, setFormIsValid] = useState(false);
+
+  const [state, dispatch] = useReducer(reducer, {
+    emailValue: "", passwordValue: "",
+  });
 
   const emailChangeHandler = (e) => {
-    setEmail(e.target.value);
-    setFormIsValid(e.target.value.includes("a") && password.trim().length > 6);
+    // setEmail(e.target.value);
+    dispatch({ type: "EMAIL_INPUT", payload: e.target.value});
+    // setFormIsValid(e.target.value.includes("@") && password.trim().length > 6);
   };
 
   const passwordChangeHandler = (e) => {
-    setEmail(e.target.value);
+    // setEmail(e.target.value);
+    dispatch({ type: "PASS_INPUT", payload: e.target.value});
+    // setFormIsValid(email.includes("@") && e.target.value.trim().length > 6);
+  };
 
-    setFormIsValid(e.target.value.trim().length > 6 && email.includes("@"));
+
+  // useEffect(() => {
+  //   const identifier = setTimeout {() => {
+  //     console.log("CHECKING FOR FORM VALIDITY");
+  //   }, 500}
+    
+    return () => {
+      console.log("CLEANUP FUNCTION BEFORE NEXT SIDE EFFECT");
+      clearTimeout(identifier);
+    };
+  }, [email, password]);
+
+  
+  
+
+  const signIn = (e) => {
+    e.preventDefault();
+    console.log("Entered Email:", state.emailValue)
+    console.log("Entered Password:", state.passwordValue)
   };
 };
 
@@ -25,7 +60,7 @@ const LogIn = () => {
 
 const signIn = (e) => {
   e.preventDefault();
-  console.log("Email: ", ennteredEmail + "Password ", ennteredPassword);
+  // console.log("Email: ", ennteredEmail + "Password ", ennteredPassword);
   console.log(formIsValid);
 
   return (
