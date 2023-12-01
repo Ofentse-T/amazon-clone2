@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useEffect, useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
 import ProductDetails from "./components/ProductDetails";
@@ -13,6 +14,9 @@ const App = () => {
       <Header />
       <main>
         <Switch>
+          <Route path="/" exact>
+            <Redirect to="/home" />
+          </Route>
           <Route path="/home">
             <Home />
           </Route>
