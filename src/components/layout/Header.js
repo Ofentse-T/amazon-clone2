@@ -3,10 +3,19 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-import AuthContext from "../../Context/authContext";
+import { auth } from "../../Firebase";
+import shoppingContext from "../../Context/shopping/shoppingContext";
 
 const Header = () => {
-  const ctx = useContext(AuthContext);
+  const shoppingContext = useContext(shoppingContext);
+  const { basket, user } = shoppingContext;
+
+  const handleAuthentication = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
+
   return (
     <header className="header">
       <Link to="/">
@@ -23,21 +32,16 @@ const Header = () => {
         </input>
       </div>
       <div className="header_nav">
-        {ctx.isLoggedIn ? (
-          <Link to="/">
-            <div className="header_option" onClick={ctx.onLogout}>
-              <span className="header_option1">Hello Guest</span>
-              <span className="header_option2">Sign In</span>
-            </div>
-          </Link>
-        ) : (
-          <Link to="LogIn">
-            <div className="header_option" onClick={onLogout}>
-              <span className="header_option1">Hello Guest</span>
-              <span className="header_option2">Sign In</span>
-            </div>
-          </Link>
-        )}
+        <Link to={!user && "/login"}>
+          <div className="header_option" onClick={handleAuthentication}>
+            <span className="header_option1">
+              Hello {!user ? "Guest" : user.email}
+            </span>
+            <span className="header_option2">
+              {user ? "Sign Out" : "Sign In"}
+            </span>
+          </div>
+        </Link>
 
         <div className="header_option">
           <span className="header_option1">Returns</span>
@@ -51,7 +55,9 @@ const Header = () => {
 
         <div className="header_optionBasket">
           <ShoppingBasketIcon />
-          <span className="header_option2 header_basketCount">0</span>
+          <span className="header_option2 header_basketCount">
+            {basket?.length}
+          </span>
         </div>
       </div>
     </header>

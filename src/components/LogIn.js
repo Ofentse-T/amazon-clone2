@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from "react";
 import { Link } from "react-router-dom";
 import ".LogIn.css";
+import shoppingContext from "../Context/shopping/shoppingContext";
 
 const redudcer = (state, action) => {
   if (action.type === "EMAIL_INPUT") {
@@ -13,8 +14,8 @@ const redudcer = (state, action) => {
   return {emailValue: "", passwordValue: ""};
 };
 
-const LogIn = () => {
-  // const [formIsValid, setFormIsValid] = useState(false);
+const LogIn = ({onLogin}) => {
+  const [formIsValid, setFormIsValid] = useState(false);
 
   const [state, dispatch] = useReducer(reducer, {
     emailValue: "", passwordValue: "",

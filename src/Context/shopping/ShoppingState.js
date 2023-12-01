@@ -16,16 +16,24 @@ export const ShoppingState = (props) => {
     });
   };
 
+  const setUser = (user) => {
+    dispatch({
+      type: "SET_USER",
+      payload: user,
+    });
+  };
+
   return (
-    <shoppingContext
+    <shoppingContext.Provider
       value={{
         basket: state.basket,
         user: state.user,
         getBasketTotal,
         addToBasket,
+        setUser,
       }}
     >
       {props.children}
-    </shoppingContext>
+    </shoppingContext.Provider>
   );
 };
