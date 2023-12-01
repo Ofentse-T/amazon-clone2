@@ -8,7 +8,7 @@ export const shoppingReducer = (state, action) => {
 
     case "SET_USER":
       return {
-        state,
+        ...state,
         user: action.payload,
       };
     default:
