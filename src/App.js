@@ -10,6 +10,8 @@ import LogIn from "./components/LogIn";
 import NotFound from "./components/NotFound";
 import shoppingContext from "./Context/shopping/shoppingContext";
 import { auth } from "../firebase";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 const App = () => {
   const shoppingContext = useContext(shoppingContext);
